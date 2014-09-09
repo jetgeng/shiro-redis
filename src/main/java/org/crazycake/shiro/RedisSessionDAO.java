@@ -135,7 +135,10 @@ public class RedisSessionDAO extends AbstractSessionDAO {
 		} catch (ExecutionException e) {
 			logger.error(e.getMessage(), e);
 			return s;
-		}
+		} catch (CacheLoader.InvalidCacheLoadException e){
+            logger.error(e.getMessage(), e);
+            return s;
+        }
 		return s;
 	}
 
