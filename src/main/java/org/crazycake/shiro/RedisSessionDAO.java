@@ -25,7 +25,7 @@ public class RedisSessionDAO extends AbstractSessionDAO {
 	 */
 	private RedisManager redisManager;
 
-	private LoadingCache<Serializable, Session> sessionCache = CacheBuilder.newBuilder().maximumSize(1024).expireAfterWrite(3, TimeUnit.MINUTES).build(
+	private LoadingCache<Serializable, Session> sessionCache = CacheBuilder.newBuilder().maximumSize(1024).expireAfterWrite(1, TimeUnit.SECONDS).build(
 			new CacheLoader<Serializable, Session>() {
 				public Session load(Serializable key) {
 					long start = System.currentTimeMillis();
